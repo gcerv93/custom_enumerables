@@ -21,4 +21,14 @@ module Enumerable
     end
   end
   # rubocop: enable Style/For
+
+  def my_select
+    return to_enum(:my_select) unless block_given?
+
+    result = []
+    my_each do |ele|
+      result << ele if yield(ele) == true
+    end
+    result
+  end
 end
