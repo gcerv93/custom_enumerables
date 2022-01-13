@@ -53,4 +53,15 @@ module Enumerable
     end
     false
   end
+
+  def my_none?
+    my_each do |ele|
+      if block_given?
+        return false if yield(ele)
+      elsif ele
+        return false
+      end
+    end
+    true
+  end
 end
