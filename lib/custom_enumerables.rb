@@ -42,4 +42,15 @@ module Enumerable
     end
     true
   end
+
+  def my_any?
+    my_each do |ele|
+      if block_given?
+        return true if yield(ele)
+      elsif ele
+        return true
+      end
+    end
+    false
+  end
 end

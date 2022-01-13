@@ -24,9 +24,17 @@ p numbers.my_select
 p numbers.select
 
 puts "\n\n"
-puts 'my_all vs. all'
-numbers = [1, 2, 3, 4, 5, 'a']
+puts 'my_all? vs. all?'
+numbers = [1, 2, 3, 4, 5, nil]
 p(numbers.my_all? { |n| n.is_a?(Integer) })
 p numbers.my_all?
 p(numbers.all? { |n| n.is_a?(Integer) })
 p numbers.all?
+
+puts "\n\n"
+puts 'my_any? vs. any?'
+# numbers = [false, false, true]
+p(numbers.my_any? { |n| n.is_a?(String) })
+p numbers.my_any?
+p(numbers.any? { |n| n.is_a?(String) })
+p numbers.any?
