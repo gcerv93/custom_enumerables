@@ -78,4 +78,14 @@ module Enumerable
     end
     count
   end
+
+  def my_map
+    return to_enum(:my_map) unless block_given?
+
+    result = []
+    my_each do |ele|
+      result << yield(ele)
+    end
+    result
+  end
 end
