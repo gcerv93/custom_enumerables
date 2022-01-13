@@ -25,7 +25,7 @@ p numbers.select
 
 puts "\n\n"
 puts 'my_all? vs. all?'
-numbers = [1, 2, 3, 4,  nil]
+numbers = [1, 2, 2, 2, 3, 4, nil]
 p(numbers.my_all? { |n| n.is_a?(Integer) })
 p numbers.my_all?
 p(numbers.all? { |n| n.is_a?(Integer) })
@@ -41,10 +41,18 @@ p numbers.any?
 
 puts "\n\n"
 puts 'my_none? vs. none?'
-numbers = [false, false, nil]
+# numbers = [false, false, nil]
 p(numbers.my_none? { |n| n == 5 })
 p numbers.my_none?
 p(numbers.none? { |n| n == 5 })
 p numbers.none?
 
 puts "\n\n"
+puts 'my_count vs. count'
+p numbers.my_count(1)
+p numbers.my_count
+p(numbers.my_count { |n| n == 2 })
+puts
+p numbers.count(1)
+p numbers.count
+p(numbers.count { |n| n == 2 })

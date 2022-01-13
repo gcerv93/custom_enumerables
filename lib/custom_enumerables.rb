@@ -64,4 +64,18 @@ module Enumerable
     end
     true
   end
+
+  def my_count(ele = nil)
+    count = 0
+    return length if ele.nil? && !block_given?
+
+    my_each do |item|
+      if block_given?
+        count += 1 if yield(item)
+      elsif item == ele
+        count += 1
+      end
+    end
+    count
+  end
 end
