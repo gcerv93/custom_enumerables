@@ -31,4 +31,15 @@ module Enumerable
     end
     result
   end
+
+  def my_all?
+    my_each do |ele|
+      if block_given?
+        return false if yield(ele) == false
+      elsif ele == false || ele.nil?
+        return false
+      end
+    end
+    true
+  end
 end

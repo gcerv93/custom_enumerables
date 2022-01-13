@@ -22,3 +22,11 @@ p(numbers.my_select { |item| item > 2 })
 p(numbers.select { |item| item > 2 })
 p numbers.my_select
 p numbers.select
+
+puts "\n\n"
+puts 'my_all vs. all'
+numbers = [1, 2, 3, 4, 5, 'a']
+p(numbers.my_all? { |n| n.is_a?(Integer) })
+p numbers.my_all?
+p(numbers.all? { |n| n.is_a?(Integer) })
+p numbers.all?
