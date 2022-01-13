@@ -1,14 +1,24 @@
 # frozen_string_literal: true
 
 # modifying enumerable methods
-# rubocop: disable Style/For
 module Enumerable
+  # rubocop: disable Style/For
   def my_each
-    return Enumerator.new(self) unless block_given?
+    return to_enum unless block_given?
 
     for ele in self
       yield ele
     end
   end
+
+  def my_each_with_index
+    return to_enum(:my_each_with_index) unless block_given?
+
+    idx = 0
+    for ele in self
+      yield ele, idx
+      idx += 1
+    end
+  end
+  # rubocop: enable Style/For
 end
-# rubocop: enable Style/For
