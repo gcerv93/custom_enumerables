@@ -88,4 +88,15 @@ module Enumerable
     end
     result
   end
+
+  def my_inject(initial = nil)
+    my_each_with_index do |ele, idx|
+      if initial.nil? && idx.zero?
+        initial = ele
+        next
+      end
+      initial = yield(initial, ele) if block_given?
+    end
+    initial
+  end
 end

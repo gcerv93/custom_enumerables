@@ -64,3 +64,20 @@ p(numbers.my_map { |n| n**2 })
 p(numbers.map { |n| n**2 })
 p numbers.my_map
 p numbers.map
+
+puts "\n\n"
+puts 'my_inject vs. inject'
+p numbers.my_inject(5) { |sum, n| sum + n }
+p numbers.inject(5) { |sum, n| sum + n }
+p numbers.my_inject(10) { |sum, n| sum + n }
+p numbers.inject(10) { |sum, n| sum + n }
+
+def multiply_els(array)
+  array.my_inject { |product, n| product * n }
+end
+
+def multiply_els_normal(array)
+  array.inject { |product, n| product * n }
+end
+p multiply_els([2, 4, 5])
+p multiply_els_normal([2, 4, 5])
