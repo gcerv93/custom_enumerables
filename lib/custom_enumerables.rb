@@ -79,12 +79,15 @@ module Enumerable
     count
   end
 
-  def my_map
-    return to_enum(:my_map) unless block_given?
-
+  def my_map(&my_proc)
     result = []
     my_each do |ele|
-      result << yield(ele)
+      res = if block_given?
+              yield(ele)
+            else
+              my_proc.call(ele)
+            end
+      result << res
     end
     result
   end

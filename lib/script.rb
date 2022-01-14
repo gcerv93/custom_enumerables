@@ -60,9 +60,9 @@ p(numbers.count { |n| n == 2 })
 puts "\n\n"
 puts 'my_map vs. my_map'
 numbers = [1, 2, 3, 4, 5]
-p(numbers.my_map { |n| n**2 })
+#p(numbers.my_map { |n| n**2 })
 p(numbers.map { |n| n**2 })
-p numbers.my_map
+#p numbers.my_map
 p numbers.map
 
 puts "\n\n"
@@ -81,3 +81,9 @@ def multiply_els_normal(array)
 end
 p multiply_els([2, 4, 5])
 p multiply_els_normal([2, 4, 5])
+
+puts "\n\n"
+puts 'my_map with proc'
+new_proc = proc { |n| n * 2 }
+p numbers.my_map(&new_proc)
+p(numbers.my_map { |n| n ** 2 })
