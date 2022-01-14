@@ -30,6 +30,8 @@ p(numbers.my_all? { |n| n.is_a?(Integer) })
 p numbers.my_all?
 p(numbers.all? { |n| n.is_a?(Integer) })
 p numbers.all?
+p numbers.my_all?(Numeric)
+p numbers.all?(Numeric)
 
 puts "\n\n"
 puts 'my_any? vs. any?'
@@ -38,6 +40,8 @@ p(numbers.my_any? { |n| n.is_a?(String) })
 p numbers.my_any?
 p(numbers.any? { |n| n.is_a?(String) })
 p numbers.any?
+p numbers.my_any?(String)
+p numbers.any?(String)
 
 puts "\n\n"
 puts 'my_none? vs. none?'
@@ -46,6 +50,8 @@ p(numbers.my_none? { |n| n == 5 })
 p numbers.my_none?
 p(numbers.none? { |n| n == 5 })
 p numbers.none?
+p numbers.my_none?(String)
+p numbers.none?(String)
 
 puts "\n\n"
 puts 'my_count vs. count'

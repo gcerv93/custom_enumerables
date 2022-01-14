@@ -32,9 +32,11 @@ module Enumerable
     result
   end
 
-  def my_all?
+  def my_all?(pattern = nil)
     my_each do |ele|
-      if block_given?
+      if !pattern.nil?
+        return false unless pattern === ele
+      elsif block_given?
         return false if yield(ele) == false
       elsif ele == false || ele.nil?
         return false
@@ -43,9 +45,11 @@ module Enumerable
     true
   end
 
-  def my_any?
+  def my_any?(pattern = nil)
     my_each do |ele|
-      if block_given?
+      if !pattern.nil?
+        return true if pattern === ele
+      elsif block_given?
         return true if yield(ele)
       elsif ele
         return true
@@ -54,9 +58,11 @@ module Enumerable
     false
   end
 
-  def my_none?
+  def my_none?(pattern = nil)
     my_each do |ele|
-      if block_given?
+      if !pattern.nil?
+        return false if pattern === ele
+      elsif block_given?
         return false if yield(ele)
       elsif ele
         return false
@@ -65,14 +71,14 @@ module Enumerable
     true
   end
 
-  def my_count(ele = nil)
+  def my_count(item = nil)
     count = 0
-    return length if ele.nil? && !block_given?
+    return length if item.nil? && !block_given?
 
-    my_each do |item|
+    my_each do |ele|
       if block_given?
-        count += 1 if yield(item)
-      elsif item == ele
+        count += 1 if yield(ele)
+      elsif ele == item
         count += 1
       end
     end
